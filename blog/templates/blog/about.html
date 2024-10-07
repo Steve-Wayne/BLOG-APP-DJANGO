@@ -1,0 +1,78 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+<div class="content-section">
+    <!-- Welcome Section -->
+    <div class="jumbotron text-center bg-light">
+        <h1 class="display-4">Welcome to Django Blog!</h1>
+        <p class="lead">A platform to share stories, thoughts, and knowledge with the world.</p>
+        <hr class="my-4">
+        <p>Explore a variety of topics, engage with inspiring content, and be part of our community.</p>
+    </div>
+
+    <!-- Mission Section -->
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="account-heading">Our Mission</h2>
+            <p>
+                At Django Blog, our mission is to provide high-quality, engaging, and thought-provoking content. We
+                strive to inspire creativity, promote critical thinking, and foster meaningful conversations.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'blog/mission.jpg' %}" class="img-fluid rounded" alt="Our Mission">
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Who We Are Section -->
+    <div class="row my-4">
+        <div class="col-md-6">
+            <img src="{% static 'blog/team.jpg' %}" class="img-fluid rounded" alt="Our Team">
+        </div>
+        <div class="col-md-6">
+            <h2 class="account-heading">Who We Are</h2>
+            <p>
+                Django Blog is managed by a passionate team of writers and developers who love to share knowledge.
+                From tech trends to lifestyle advice, our diverse team brings you valuable insights on a range of topics.
+            </p>
+        </div>
+    </div>
+
+    <!-- Values Section (Optional for More Content) -->
+    <div class="row my-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Creativity</h5>
+                    <p class="card-text">We believe in the power of creative thinking to transform ideas into reality.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Integrity</h5>
+                    <p class="card-text">We value honesty, transparency, and trust in every interaction.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Community</h5>
+                    <p class="card-text">Our community is at the heart of everything we do. Together, we grow and learn.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="text-center my-5">
+        <h2 class="account-heading">Get in Touch</h2>
+        <p>Have any questions or suggestions? We'd love to hear from you!</p>
+        <a class="btn btn-primary" href="{% url 'blog-contact' %}" role="button">Contact Us</a>
+    </div>
+</div>
+{% endblock %}

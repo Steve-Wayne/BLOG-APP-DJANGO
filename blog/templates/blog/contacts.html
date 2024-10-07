@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="content-section p-4 shadow">
+                <h2 class="text-center account-heading">Contact Us</h2>
+                <p class="text-center text-muted mb-4">
+                    We'd love to hear from you! Whether it's feedback, inquiries, or suggestions, feel free to reach out.
+                </p>
+                
+                <!-- Form Start -->
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <!-- Use crispy_forms to handle form layout and rendering -->
+                    {{ form|crispy }}
+                    
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </div>
+                </form>
+                <!-- Form End -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
