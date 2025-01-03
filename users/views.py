@@ -81,7 +81,7 @@ def ContactUs(request):
         if form.is_valid():
             # Save the form data
             contact = form.save()
-
+              
             # Send email
             subject = f"Contact Us message from {contact.name}"
             message = f"Message:\n{contact.message}\n\nFrom: {contact.name}\nEmail: {contact.email}"
@@ -90,9 +90,23 @@ def ContactUs(request):
             
             # Send the email
             send_mail(subject, message, from_email, recipient_list, fail_silently=False)
-
+              
             # Show success message and redirect
             messages.success(request, 'Thank you for contacting us. We will get back to you soon!')
+            # Process the form data (e.g., save it to the database, send email to admin, etc.)
+            subject = "Thank you for contacting us!"
+            message = "We have received your message and will get back to you shortly."
+            recipient = form.cleaned_data.get('email')  # assuming the form has an 'email' field
+
+            # Send the automated reply
+            send_mail(
+                subject,
+                message,
+                settings.DEFAULT_FROM_EMAIL,
+                [recipient],
+                fail_silently=False,
+            )
+
             return redirect('blog-home')
     else:
         form=ContactUsForm()
