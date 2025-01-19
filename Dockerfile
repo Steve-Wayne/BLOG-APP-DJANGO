@@ -6,7 +6,7 @@ FROM python:${PYTHON_VERSION}
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     VIRTUAL_ENV=/opt/venv \
-    PATH="$VIRTUAL_ENV/bin:$PATH"
+    PATH="/opt/venv/bin:$PATH"  
 
 # Install system dependencies
 RUN apt-get update && \
@@ -17,26 +17,23 @@ RUN apt-get update && \
         gcc \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Create and activate virtual environment
+# Create and activate virtual environment inside the container
 RUN python -m venv $VIRTUAL_ENV
 
-# Upgrade pip inside the virtual environment
-RUN $VIRTUAL_ENV/bin/pip install --upgrade pip
+# Upgrade pip
+RUN pip install --upgrade pip
 
 # Set working directory
 WORKDIR /code
 
 # Copy requirements file and install dependencies
-COPY requirements.txt . 
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # Copy project files
 COPY . .
 
-# Ensure entrypoint.sh is executable
-RUN chmod +x entrypoint.sh
-
-# Collect static files (only during build time)
+# Collect static files
 RUN python manage.py collectstatic --noinput
 
 # Expose port 8000
