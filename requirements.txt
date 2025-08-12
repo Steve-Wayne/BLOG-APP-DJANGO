@@ -21,7 +21,7 @@ fsspec==2024.9.0
 idna==3.8
 Jinja2==3.1.4
 kiwisolver==1.4.5
-Markdown==3.7
+Markdown==3.8.2
 markdown-it-py==3.0.0
 MarkupSafe==2.1.5
 matplotlib==3.9.1.post1
