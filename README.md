@@ -24,5 +24,5 @@ Usage
 Open http://localhost:8000 to access the blog app.
 
 Contributing
-Feel free to fork and submit pull requests for enhancements.
+Feel free to fork and submit pull requests for enhancements.And please use a random serial number on your pull request
 
