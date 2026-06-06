@@ -67,11 +67,15 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
-          level: warning
+          // AI FIX START
+level: warning
           semgrep_rules: p/default p/security-audit p/secrets
   trivy:
+
     name: Trivy Container Scan
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -82,3 +86,4 @@ jobs:
           ignore-unfixed: true
           format: table
           severity: CRITICAL,HIGH
+// AI FIX END
